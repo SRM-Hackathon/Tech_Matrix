@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.la.bean.UserBean;
 import com.la.common.Config;
+import com.la.common.Constant;
 import com.la.common.Utilities;
 import com.la.model.UserModel;
 
@@ -40,8 +41,11 @@ public class Register extends HttpServlet {
 			UserModel model=new UserModel();
 			UserBean bean =(UserBean)session.getAttribute("userbean");
 			Connection con=Config.getInstance().getConnection();
+			bean.setEmail_verify_status("1");
 			boolean status=model.addUserDetails(con,bean);
 			System.out.println("status added "+status);
+			Constant.message="You are registered successfully";
+			response.sendRedirect("index.jsp");
 		}
 	}
 

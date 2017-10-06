@@ -2,9 +2,12 @@ package com.la.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import com.la.bean.UserBean;
 import com.la.common.Constant;
+
 
 public class UserModel {
 	
@@ -37,17 +40,38 @@ public class UserModel {
 				Constant.message = "Registered Successfully";
 			}
 			else{
-				Constant.message = "Registration not Successfully";
+				Constant.message = "Registration not Success";
 			}
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			Constant.message = "Registration not Successfully";
+			Constant.message = "Registration not Success";
 			return status;
 			
 		}
 		
 		return status;
+	}
+	
+	
+	public String getVerifyStatus(Connection con,String email) {
+			String response="0";
+			try
+			{
+				String qry = "SELECT mobile_verify_status FROM `la_users` WHERE email="+email;
+				Statement stm = con.createStatement();
+				ResultSet rs = stm.executeQuery(qry);
+				if(rs.next()) {
+					response =rs.getString(1);
+				}
+				
+			}
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+				return response;
+			}
+			return response;
 	}
 	 
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.la.common.Constant"%>
 <html>
 <head>
   <meta charset="utf-8">
@@ -32,8 +33,27 @@
   <div class="login-logo">
    <b>LAW</b>Automation
   </div>
+  
   <!-- /.login-logo -->
   <div class="login-box-body">
+  							<%
+							String message = Constant.message;
+							System.out.println(message);
+  							if (message.equals("You are registered successfully")) {
+						%>
+						<h4>
+							<font color="green">Registered Successfully</font>
+						</h4>
+						<%
+							Constant.message = "";
+							}else if(message.equals("Registration not Success")){
+								%>
+							<h4>
+							<font color="red">Registration not  Successful</font>
+							</h4>	
+							<% Constant.message = "";
+							}%>
+							
     <p class="login-box-msg">Sign in</p>
 
     <form action="Login" method="post">
