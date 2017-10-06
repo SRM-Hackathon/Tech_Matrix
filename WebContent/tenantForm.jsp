@@ -3,6 +3,7 @@
 <%@include file="header.jsp"%>
 <script type="text/javascript" src="./dist/js/tech_matrix.js"></script>
 	 <%
+	 
       UserBean bean = (UserBean) session.getAttribute("userbean");
   	String fullname =bean.getFullname(); 
   	String email=bean.getEmail();
@@ -26,11 +27,11 @@
             <!-- form start -->
               <form role="form" action="TenantController" method="POST"  enctype="multipart/form-data" >
               <div class="box-body">
-              
+                <!--
               <br> <hr>
                   <center><strong><i class="fa fa-fw fa-home"></i> Address Details in which Tenants are staying </strong> </center>
                   <hr>  
-                  <div class="form-group">
+                 <div class="form-group">
                 <label>Select state of India</label>
                 <select class="form-control select2" style="width: 100%;" id="State1" name="StateOwner"> 
                 </select>
@@ -71,48 +72,55 @@
                   </div>
                  <br> 
                
-                   <br> <hr>
-                  <center><strong><i class="fa fa-fw fa-user"></i>Tenant's information </strong> </center>
+                   <br> <hr> -->
+                   <div align="center">
+                  <h3><i class="fa fa-fw fa-user"></i>Tenant's information </h3> </center>
+                  </div>
                   <hr>  
                   
                   <div class="form-group">
-                  <label for="exampleInputEmail1">Date Of Entrance (Should be in {dd/mm/yyyy} and seperated with / )</label>
-                  <input type="text" class="form-control" name="DateOfEnterTen"   placeholder="dd/mm/yyyy" required>
+                  <label >Date Of Entrance (Should be in {dd/mm/yyyy} and seperated with / )</label>
+                  <input type="text" class="form-control pull-right"  name="dateOfEnterTen" placeholder="dd/mm/yyyy" required>
                   </div> 
                
                    <div class="form-group">
-                  <label for="exampleInputEmail1">Full Name</label>
-                  <input type="text" class="form-control" name="FullnameTen"   placeholder="Enter your Full Name" required>
+                  <label >Full Name</label>
+                  <input type="text" class="form-control" name="fullnameTen"   placeholder="Enter your Full Name" required>
                   </div> 
                   
                   <div class="form-group">
-                  <label for="exampleInputEmail1">Phone Number</label>
-                  <input type="text" class="form-control" name="MobileNumTen"   placeholder="Enter your Mobile Number" required>
+                  <label >Phone Number</label>
+                  <input type="text" class="form-control" name="mobileNumTen"   placeholder="Enter your Mobile Number" required>
                   </div> 
                    
                    <div class="form-group">
-                  <label for="exampleInputEmail1">Aadhar Card Number</label>
-                  <input type="text" class="form-control" name="AadharCardNumten"   placeholder="Enter your Aadhar Card Number" required>
+                  <label >Aadhar Card Number</label>
+                  <input type="text" class="form-control" name="aadharCardNumten"   placeholder="Enter your Aadhar Card Number" required>
                   </div> 
-                         <div class="form-group">
-                  <label for="exampleInputEmail1">Father/Husband Name</label>
-                  <input type="text" class="form-control" name="FaOrHuNameTen"   placeholder="Enter your Father's/Husband's Name" >
+                      <div class="form-group">
+                  <label>Full- Address </label>
+                  <textarea class="form-control" rows="3" placeholder="Enter address here."  name="tenantAddress" ></textarea>
+                  <label>including --> House Number, Street and area ,Land Mark  (max 255 characters are allowed) </label>
+                  </div>
+                  <div class="form-group">
+                  <label >Pincode</label>
+                  <input type="text" class="form-control" name="pincode"   placeholder="Enter Pincode" required>
                   </div> 
                   
                     <div class="form-group">
                  
-                  <label for="exampleInputFile">Upload Passport Photo</label>
+                  <label >Upload Passport Photo</label>
                   <input type="file" id="exampleInputFile" name="PhotoTen">
 
                   <p ><strong>Note: Image must be cropped.</strong></p>
                
-                   <label for="exampleInputFile">Upload Right ThumbPrint</label>
+                   <label>Upload Right ThumbPrint</label>
                   <input type="file" id="exampleInputFile" name="FingerPrintTen" >
 
                   <p ><strong>Note : Finger Print taken Should be on white background and cropped. </strong></p>
-               
+               			</div>
                  
-             
+             <!-- 
              <br><hr>
                   <center><strong><i class="fa fa-fw fa-home"></i> Permanent Address Details of Tenant </strong> </center>
                   <hr>  
@@ -187,7 +195,7 @@
                   <div class="form-group">
                   <label>Full- Address </label>
                   <textarea class="form-control" rows="3" placeholder="Enter address here."  name="AddressTenRel" ></textarea>
-                  <label>including --> House Number, Street and area ,Land Mark ,Pincode, (max 255 characters are allowed) </label>
+                  <label>including => House Number, Street and area ,Land Mark ,Pincode, (max 255 characters are allowed) </label>
                   </div>
                   
               <!-- /.box-body -->

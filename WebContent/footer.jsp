@@ -1,7 +1,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>Version</b> 1.0
     </div>
   <center> <strong>Copyright &copy;  Tech-Matrix </strong> All rights
     reserved.</center>
