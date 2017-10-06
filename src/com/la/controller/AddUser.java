@@ -3,11 +3,13 @@ package com.la.controller;
 import java.io.IOException;
 import java.sql.Connection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.la.bean.UserBean;
 import com.la.common.Config;
@@ -47,9 +49,20 @@ public class AddUser extends HttpServlet {
 		bean.setEmail_verify_status("0");
 		bean.setMobile_verify_status("0");
 		
+		String otp_generated=Utilities.generateOTP();
+		
+		boolean mail_status=Utilities.sendMail(otp_generated, bean.getEmail());
+		if(mail_status) {
+			HttpSession session=request.getSession();
+			session.setAttribute("otp", otp_generated);
+			session.setAttribute("userbean", bean);
+			response.sendRedirect("/email_otp_verify.jsp");
+			
+		}
+		System.out.println("bean"+bean);/*
 		Connection con=Config.getInstance().getConnection();
 		UserModel model=new UserModel();
-		model.addUserDetails(con, bean);
+		model.addUserDetails(con, bean);*/
 	
 
 		

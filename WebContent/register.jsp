@@ -105,6 +105,21 @@ function populatestates(countryElementId, stateElementId) {
     }
 }
 
+
+</script>
+<script type="text/javascript">
+
+<script type="text/javascript">
+function Validate() {
+    var password = document.getElementById("pass").value;
+    var confirmPassword = document.getElementById("cPass").value;
+    if (password != confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+    }
+    return true;
+}
+
 </script>
 </head>
 <body class="hold-transition register-page">
@@ -116,7 +131,7 @@ function populatestates(countryElementId, stateElementId) {
 		<div class="register-box-body">
 			<p class="login-box-msg">Register a new membership</p>
 
-			<form action="./index.html" method="post">
+			<form action="AddUser" method="post">
 				<div class="form-group has-feedback">
 					<label>Full Name</label> <input type="text" class="form-control"
 						name="fullname" placeholder="Full name" required> <span
@@ -197,13 +212,13 @@ function populatestates(countryElementId, stateElementId) {
 
 				<div class="form-group has-feedback">
 					<label>Create Password</label> <input type="password"
-						class="form-control" name="password" placeholder="Password"
+						class="form-control" id="pass" name="password" placeholder="Password"
 						required> <span
 						class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
 					<label>Confirm Password</label> <input type="password"
-						class="form-control" placeholder="Retype password" required>
+						class="form-control" id="cPass" placeholder="Retype password" required>
 					<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
 				</div>
 				<div class="row">

@@ -99,6 +99,14 @@ public class UserBean {
 	public void setMobile_verify_status(String mobile_verify_status) {
 		this.mobile_verify_status = mobile_verify_status;
 	}
+	@Override
+	public String toString() {
+		return "UserBean [id=" + id + ", fullname=" + fullname + ", aadhar=" + aadhar + ", mobile=" + mobile
+				+ ", email=" + email + ", state=" + state + ", city=" + city + ", hou_ap_no=" + hou_ap_no + ", street="
+				+ street + ", pincode=" + pincode + ", near_police=" + near_police + ", password=" + password
+				+ ", email_verify_status=" + email_verify_status + ", mobile_verify_status=" + mobile_verify_status
+				+ "]";
+	}
 	
 	
 	
