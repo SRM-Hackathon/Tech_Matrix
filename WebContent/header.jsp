@@ -56,7 +56,7 @@ else{
     <!-- Logo -->
     <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>L</b>AM</span>
+      <span class="logo-mini"><b>L</b>AW</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Law</b>-Automaton</span>
     </a>
@@ -103,29 +103,17 @@ else{
           <a href="#"><i class="fa fa-circle text-success"> </i> Online</a>
            
         </li> 
-        
+         <li><a href="home.jsp"><i class="fa fa-user"></i>User Home</a></li> 
+       
         <li class="treeview">
-          <a href="#">
-              <i class="fa fa-dashboard"></i> <span>Home</span>
+           <a href="#">
+            <i class="fa fa-fw fa-external-link-square"></i>   <span>Tenant Form</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-           <ul class="treeview-menu">
-             <li><a >Wannna go on Home page<br> click the link given below. </a></li> 
-            <li><a href="LawAutomatonUserHome.jsp"><i class="fa fa-link"></i>User Home</a></li>            
-          </ul>
-        </li>
-        <li class="treeview">
-           <a href="#">
-            <i class="fa fa-fw fa-external-link-square"></i>   <span>Tenant Form</span>
-         <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
           <ul class="treeview-menu">
-             <li><a > Fill Information about your <br> <i class="fa fa-fw fa-users"> </i> Tenants.<br> click the link given below. </a></li> 
-            <li><a href="tenantForm.jsp"><i class="fa fa-link"></i>Tenant form</a></li>            
+           <li><a href="tenantForm.jsp"><i class="fa fa-link"></i>Tenant form</a></li>            
           </ul>
         </li>
         <li class="treeview">
@@ -137,7 +125,6 @@ else{
           </a>
           
            <ul class="treeview-menu">
-             <li><a > Fill Information about your <br><i class="fa fa-fw fa-users"> </i> Hostellers.<br> click the link given below. </a></li> 
             <li><a href="hostelForm.jsp"><i class="fa fa-link"></i>Hostel form</a></li>            
           </ul>
         </li>
@@ -149,7 +136,6 @@ else{
             </span>
           </a>
            <ul class="treeview-menu">
-             <li><a > Fill Information about your <br> <i class="fa fa-fw fa-users"> </i> Hotel Visitors.<br> click the link given below. </a></li> 
             <li><a href="hotelForm.jsp"><i class="fa fa-link"></i>Hotel form</a></li>            
           </ul>
         </li>
@@ -163,7 +149,6 @@ else{
             </span>
           </a>
            <ul class="treeview-menu">
-             <li><a > Fill Information about your <br> <i class="fa fa-fw fa-users"></i> Labours.<br> click the link given below. </a></li> 
             <li><a href="contractorForm.jsp"><i class="fa fa-link"></i> Contractor form</a></li>            
           </ul>
         </li>
@@ -176,8 +161,7 @@ else{
             </span>
           </a>
            <ul class="treeview-menu">
-             <li><a> Fill Information about your <br> <i class="fa fa-fw fa-users"></i> Servants.<br> click the link given below. </a></li> 
-            <li><a href="servantForm.jsp"><i class="fa fa-link"></i>Servant form</a></li>            
+             <li><a href="servantForm.jsp"><i class="fa fa-link"></i>Servant form</a></li>            
           </ul>
         </li>
       </ul>
