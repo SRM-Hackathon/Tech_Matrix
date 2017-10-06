@@ -56,7 +56,7 @@ public class AddUser extends HttpServlet {
 			HttpSession session=request.getSession();
 			session.setAttribute("otp", otp_generated);
 			session.setAttribute("userbean", bean);
-			response.sendRedirect("/email_otp_verify.jsp");
+			response.sendRedirect("email_otp_verify.jsp");
 			
 		}
 		System.out.println("bean"+bean);/*

@@ -37,7 +37,7 @@
       <div class="form-group">
                  <label >Enter OTP which came on your mail</label>
                  <input type="text" class="form-control" name="otpentered" placeholder="Enter OTP" required>
-                 <input type="hidden" class="form-control" name="otp">
+               
                  </div>
      
    
