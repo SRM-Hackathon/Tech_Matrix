@@ -52,6 +52,14 @@
 							<font color="red">Registration not  Successful</font>
 							</h4>	
 							<% Constant.message = "";
+							}else if(message.equals("Invalid credentials")){
+								
+								%>
+								<h4>
+								<font color="red">Invalid credentials</font>
+								</h4>	
+								<% Constant.message = "";
+								
 							}%>
 							
     <p class="login-box-msg">Sign in</p>

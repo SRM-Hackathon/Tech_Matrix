@@ -1,5 +1,10 @@
 package com.la.model;
 
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.net.URLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,5 +79,113 @@ public class UserModel {
 			return response;
 	}
 	 
+	
+	public boolean checkEmailPassword(Connection con,UserBean bean)
+    { 
+        boolean flag=false;
+        String email_entered=  bean.getEmail();
+        String pass_entered= bean.getPassword(); 
+        
+        
+        try {
+            Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery("select password from la_users where email ='"+email_entered+"'");
+            
+             if(rs.next())
+             {//mil gaya
+                 if(rs.getString(1).equals(pass_entered))
+                 {
+                     flag=true;
+                     System.out.println("Email and Password entered are correct");
+                 }
+                 else
+                 {
+                	 Constant.message = "Invalid credentials"; 
+                     System.out.println("Wrong Password entered");
+                 } 
+                 
+             }
+             else
+             {//nhi mila
+                 System.out.println("Wrong Email Entered");
+             }
+             
+             
+        //     con.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        
+        
+        return flag;
+    }
+	
+	
+	public static  boolean sendMobileOTP(Connection con, String OTPSMS , UserBean bean)
+    {
+        boolean flag=false;
+        
+        try 
+        {
+             
+             String email_entered=  bean.getEmail();
+             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                
+              ResultSet rs = stmt.executeQuery("select mobile from la_users where email='"+email_entered+"'");
+              
+            boolean nextrowvalid=  rs.next();
+            
+              if(nextrowvalid) {
+                String  Mobilenumber= rs.getString(1);
+              
+    /*
+        // Message Sending Starts               
+        // Construct data for sending message on mobile
+        String apiKey = "apikey=" + URLEncoder.encode("OToFOR6ELr0-laL2neZP5qiyr15e4fYXOmRnpd9GQt", "UTF-8");
+                   String user="&username="+URLEncoder.encode("Neerajvyas615@gmail.com", "UTF-8");
+        String hash="&hash="+URLEncoder.encode("b000afa1bbab72d3edf57cf41cc90466eeaf32eb76a41ef4e859a18f062cb534", "UTF-8");
+                   String password="&password="+URLEncoder.encode("Neo9644272667", "UTF-8");
+                   String message = "&message=" + URLEncoder.encode("Your OTP is "+OTPSMS+" came from LAW-AUTOMATON Website.", "UTF-8");
+        String sender = "&sender=" + URLEncoder.encode("TXTLCL", "UTF-8");
+        String numbers = "&numbers=" + URLEncoder.encode("91"+Mobilenumber, "UTF-8");
+        // Send data
+        String data = "https://api.textlocal.in/send/?" + apiKey + user +hash+ password + numbers + message + sender ;
+        URL url = new URL(data);
+        URLConnection conn = url.openConnection();
+        conn.setDoOutput(true);
+        
+        // Get the response
+        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String line;
+        String sResult="";
+        while ((line = rd.readLine()) != null) {
+        // Process line...
+            sResult=sResult+line+" ";
+        }
+        rd.close();
+        
+                 System.out.println(""+sResult);
+     // Msg Sending Ends
+     
+        */   
+    
+     System.out.println("OTP ="+OTPSMS);           
+               flag=true;  
+              }    
+              
+             // con.close();
+        }
+        catch (Exception e)
+        {
+            
+        }
+        
+    
+    
+        return flag;
+    }
 
 }

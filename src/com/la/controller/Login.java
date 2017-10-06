@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.la.bean.UserBean;
 import com.la.common.Config;
 import com.la.common.Utilities;
 import com.la.model.UserModel;
@@ -33,15 +35,36 @@ public class Login extends HttpServlet {
 	String email=Utilities.getParamValue(request,"email");
 	String password=Utilities.getParamValue(request,"password");
 	
+	UserBean bean =new UserBean();
+	bean.setEmail(email);
+	bean.setPassword(password);
+	
 	Connection con=Config.getInstance().getConnection();
 	UserModel model =new UserModel();
 	String verifyStatus=model.getVerifyStatus(con,email);
-	if(verifyStatus.equals("1")) {
-		
+//check pass
+	
+	if(model.checkEmailPassword(con, bean)) {
+		if(verifyStatus.equals("0")) {
+		String otp_generated=Utilities.generateOTP();
+		boolean mobStatus=UserModel.sendMobileOTP(con,otp_generated,bean);
+		System.out.println(mobStatus);
+		if(mobStatus) {
+			HttpSession session =request.getSession();
+			session.setAttribute("OTP", otp_generated);
+			
+			response.sendRedirect("verifyMobile.jsp");
+		}
+		}
+		else {
+			Utilities.generateOTP();
+		 }
 	}
 	else {
-		Utilities.generateOTP();
+		
+		response.sendRedirect("index.jsp");
 	}
+	
 	
 	}
 
