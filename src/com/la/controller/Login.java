@@ -59,8 +59,13 @@ public class Login extends HttpServlet {
 			
 		}
 		else {
-			response.sendRedirect("la_user_home.jsp");
-		 }
+			HttpSession session =request.getSession();
+		    UserBean b=model.getUserByEmail(con, email);
+		    System.out.println("latest bean"+b);
+	    	session.setAttribute("userbean", b);
+			response.sendRedirect("home.jsp");
+		
+		}
 	}
 	else {
 		

@@ -107,6 +107,29 @@ public class UserModel {
 			return response;
 	}
 	 
+	public UserBean getUserByEmail(Connection con,String email) {
+		UserBean bean=new UserBean();
+		try
+		{
+			String qry = "SELECT id,fullname FROM `la_users` WHERE email='"+email+"'";
+			Statement stm = con.createStatement();
+			ResultSet rs = stm.executeQuery(qry);
+			while(rs.next()) {
+				int id=rs.getInt(1);
+				bean.setId(id+"");
+				bean.setFullname(rs.getString(2));
+				bean.setEmail(email);
+				
+			}
+			
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			return bean;
+		}
+		return bean;
+}
 	
 	public boolean checkEmailPassword(Connection con,UserBean bean)
     { 

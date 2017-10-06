@@ -31,17 +31,13 @@ public class MobileVerification extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 				doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String otpentered=Utilities.getParamValue(request, "otpenteredsms");
 	   	HttpSession session=request.getSession();
@@ -55,7 +51,9 @@ public class MobileVerification extends HttpServlet {
 			boolean status=model.updateUserDetails(con,bean);
 			System.out.println("status added "+status);
 			if(status) {
-			response.sendRedirect("la_user_home.jsp");
+				
+				
+			response.sendRedirect("home.jsp");
 			}
 			else {
 				response.sendRedirect("index.jsp");
