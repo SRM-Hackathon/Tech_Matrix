@@ -16,6 +16,34 @@ import com.la.common.Constant;
 
 public class UserModel {
 	
+	public boolean updateUserDetails(Connection con,UserBean bean){
+		boolean status=false;
+		try{
+			String qry="UPDATE `la_users` SET `mobile_verify_status`=? WHERE `email`=?";
+			PreparedStatement ps=con.prepareStatement(qry);
+			ps.setString(1,bean.getMobile_verify_status());
+			ps.setString(2,bean.getEmail());
+	
+			int i=ps.executeUpdate();
+			if(i>0){
+				status=true;
+				Constant.message = "Verification done Successfully";
+			}
+			else{
+				Constant.message = "Verification not Updated Successfully";
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			Constant.message = "Verification not Updated Successfully";
+			return status;
+			
+		}
+		
+		return status;
+	}
+	
+	
 	public boolean addUserDetails(Connection con,UserBean bean){
 		boolean status=false;
 		try{
@@ -63,7 +91,7 @@ public class UserModel {
 			String response="0";
 			try
 			{
-				String qry = "SELECT mobile_verify_status FROM `la_users` WHERE email="+email;
+				String qry = "SELECT mobile_verify_status FROM `la_users` WHERE email='"+email+"'";
 				Statement stm = con.createStatement();
 				ResultSet rs = stm.executeQuery(qry);
 				if(rs.next()) {

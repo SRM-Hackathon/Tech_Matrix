@@ -16,37 +16,53 @@ import com.la.common.Constant;
 import com.la.common.Utilities;
 import com.la.model.UserModel;
 
-
-@WebServlet("/Register")
-public class Register extends HttpServlet {
+/**
+ * Servlet implementation class MobileVerification
+ */
+@WebServlet("/MobileVerification")
+public class MobileVerification extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
- 
-    public Register() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MobileVerification() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		
+				doPost(request, response);
 	}
 
-	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-		String otpentered=Utilities.getParamValue(request, "otpentered");
-		HttpSession session=request.getSession();
-		String otp_generated=(String)session.getAttribute("otp");
-		if(otp_generated.equals(otpentered.trim())) {
+		String otpentered=Utilities.getParamValue(request, "otpenteredsms");
+	   	HttpSession session=request.getSession();
+	    String otp_generated=(String)session.getAttribute("OTP");
+	    if(otp_generated.equals(otpentered.trim())) {
 			UserModel model=new UserModel();
 			UserBean bean =(UserBean)session.getAttribute("userbean");
 			Connection con=Config.getInstance().getConnection();
-			bean.setEmail_verify_status("1");
-			boolean status=model.addUserDetails(con,bean);
+			bean.setMobile_verify_status("1");
+			
+			boolean status=model.updateUserDetails(con,bean);
 			System.out.println("status added "+status);
-			Constant.message="You are registered successfully";
-			response.sendRedirect("index.jsp");
+			if(status) {
+			response.sendRedirect("la_user_home.jsp");
+			}
+			else {
+				response.sendRedirect("index.jsp");
+			}
 		}
+	    
+	   	
 	
 	}
 

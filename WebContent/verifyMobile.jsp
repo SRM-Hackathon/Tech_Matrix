@@ -30,7 +30,7 @@
  <div class="register-box-body">
    <p class="login-box-msg">Verify your Mobile number</p>
 
-   <form action="./index.html" method="post">
+   <form action="MobileVerification" method="post">
    
      
       <div class="form-group">

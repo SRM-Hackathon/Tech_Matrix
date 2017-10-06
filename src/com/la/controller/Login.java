@@ -43,21 +43,23 @@ public class Login extends HttpServlet {
 	UserModel model =new UserModel();
 	String verifyStatus=model.getVerifyStatus(con,email);
 //check pass
-	
-	if(model.checkEmailPassword(con, bean)) {
+	boolean status=model.checkEmailPassword(con, bean);
+	System.out.println("statyus"+status);
+	if(status) {
 		if(verifyStatus.equals("0")) {
 		String otp_generated=Utilities.generateOTP();
 		boolean mobStatus=UserModel.sendMobileOTP(con,otp_generated,bean);
 		System.out.println(mobStatus);
-		if(mobStatus) {
-			HttpSession session =request.getSession();
-			session.setAttribute("OTP", otp_generated);
+			if(mobStatus) {
+				HttpSession session =request.getSession();
+				session.setAttribute("OTP", otp_generated);
+				session.setAttribute("userbean", bean);
+				response.sendRedirect("verifyMobile.jsp");
+			}
 			
-			response.sendRedirect("verifyMobile.jsp");
-		}
 		}
 		else {
-			Utilities.generateOTP();
+			response.sendRedirect("la_user_home.jsp");
 		 }
 	}
 	else {
