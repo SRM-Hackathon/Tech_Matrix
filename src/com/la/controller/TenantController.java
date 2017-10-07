@@ -72,7 +72,7 @@ public class TenantController extends HttpServlet {
 					
 			    }else if(name.equals("PhotoTen")){
 					
-			    	String uploadPath ="E://useruploads";
+			    	String uploadPath ="E://useruploads//";
 
 			    	String fileName = seconds+new File(item.getName()).getName();
 
@@ -86,7 +86,7 @@ public class TenantController extends HttpServlet {
 					
 			    }else if(name.equals("FingerPrintTen")){
 			    	
-			    	String uploadPath ="E://useruploads";
+			    	String uploadPath ="E://useruploads//";
 
 			    	String fileName = seconds+new File(item.getName()).getName();
 

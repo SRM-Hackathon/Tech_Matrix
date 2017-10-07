@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.la.common.Utilities;
 
@@ -41,6 +42,8 @@ public class PoliceLogin extends HttpServlet {
 		String password=Utilities.getParamValue(request,"password");
 		
 		if(email.equals("admin@gmail.com" ) && password.equals("admin@123")) {
+			HttpSession session =request.getSession();
+			session.setAttribute("email",email);
 			response.sendRedirect("PoliceVerification");
 		}
 		
