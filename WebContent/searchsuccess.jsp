@@ -1,3 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+<% 
+String ad =(String) session.getAttribute("Aadhar"); %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<p>Got it.    AAdhar Card Number : <%=ad%></p>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="com.la.model.*"%>
@@ -165,129 +178,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     	<div class="box-body">
-					     <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Search By Finger Print</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form"  action="PoliceSearch" method="POST"  enctype="multipart/form-data" >
-              <div class="box-body">
-               
-                <div class="form-group">
-                  <label for="exampleInputFile">File input</label>
-                  <input type="file" name="uploadFile" id="exampleInputFile">
-
-                  <p class="help-block">Upload Image Of Print. </p>
-                </div>
-                
-              </div>
-              <!-- /.box-body -->
-
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
-          </div>
-          </div>
-     <div class="row">
-      
-        
-        
-         <section class="content">
-					<h2>Verified Tenants</h2>
-				
-						<table id="example1" class="table table-bordered table-striped">
-							<thead>
-							<th>Date of Entrance
-							</th>
-							<th>
-										Name
-							</th>
-							<th>
-									Mobile No.
-							</th>
-							<th>
-							Aadhar Card
-							</th>
-							<th>
-							Address
-							</th>
-							<th>
-							Pincode
-							</th>
-							</thead>
-								<c:forEach items="${list}" var="item">
-									<tr>
-
-										<td><c:out value="${item.dateOfEnterTen}" /></td>
-										<td><c:out value="${item.fullnameTen}" /></td>
-										<td><c:out value="${item.mobileNumTen}" /></td>
-										<td><c:out value="${item.aadharCardNumten}" /></td>
-										<td><c:out value="${item.tenantAddress}"></c:out></td>
-										<td><c:out value="${item.pincode}"></c:out></td>
-
-
-										<%-- 		<td><center>
-												<a href="EditUser?id=<c:out value="${item.id}" />"><i
-													class="fa fa-fw fa-edit"></i></a>
-											</center></td> --%>
-
-									</tr>
-								</c:forEach>
-
-							
-						</table>
-						
-						
-						<h2>Not Verified List</h2>
-						
-						
-						<table id="example1" class="table table-bordered table-striped">
-							<thead>
-							<th>Date of Entrance
-							</th>
-							<th>
-										Name
-							</th>
-							<th>
-									Mobile No.
-							</th>
-							<th>
-							Aadhar Card
-							</th>
-							<th>
-							Address
-							</th>
-							<th>
-							Pincode
-							</th>
-							</thead>
-								<c:forEach items="${nlist}" var="item">
-									<tr>
-
-										<td><c:out value="${item.dateOfEnterTen}" /></td>
-										<td><c:out value="${item.fullnameTen}" /></td>
-										<td><c:out value="${item.mobileNumTen}" /></td>
-										<td><c:out value="${item.aadharCardNumten}" /></td>
-										<td><c:out value="${item.tenantAddress}"></c:out></td>
-										<td><c:out value="${item.pincode}"></c:out></td>
-
-
-										<%-- 		<td><center>
-												<a href="EditUser?id=<c:out value="${item.id}" />"><i
-													class="fa fa-fw fa-edit"></i></a>
-											</center></td> --%>
-
-									</tr>
-								</c:forEach>
-
-							
-						</table>
-					</div>
-
-
-				</section>
+			<p>Got it.    AAdhar Card Number : <%=ad%></p>
        </div>
       
       
