@@ -183,7 +183,17 @@
                 
               </div>
               <!-- /.box-body -->
-
+					<%
+							String message = Constant.message;
+							System.out.println(message);
+  							if (message.equals("No records Found")) {
+						%>
+						<h4>
+							<font color="red">No records Found</font>
+						</h4>
+						<%
+							Constant.message = "";
+							}%>
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>

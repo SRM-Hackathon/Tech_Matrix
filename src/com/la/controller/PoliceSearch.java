@@ -21,6 +21,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.la.bean.TenantBean;
 import com.la.common.Config;
+import com.la.common.Constant;
 import com.la.model.TenantModel;
 import com.machinezoo.sourceafis.FingerprintMatcher;
 import com.machinezoo.sourceafis.FingerprintTemplate;
@@ -102,6 +103,7 @@ public class PoliceSearch extends HttpServlet {
                                         }
                              
                              response.sendRedirect("policeTenant.jsp");
+                             Constant.message="No records Found";
                              
                              //iterate
                             
